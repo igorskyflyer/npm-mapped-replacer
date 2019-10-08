@@ -2,3 +2,8 @@
 
 ## Node modules
 /node_modules/
+
+# Files
+
+## NPM Ignore
+.npmignore
