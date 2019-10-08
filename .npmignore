@@ -1,0 +1,19 @@
+# Directories
+
+## Visual Studio Code directory
+/.vscode/
+## Benchmarking directory
+/benchmark/
+## Tests directory
+/test/
+## GitHub directory
+/.github/
+## Internal stuff
+/.internal/
+## Docs directory
+/docs/
+
+# Files
+
+## EditorConfig
+.editorconfig

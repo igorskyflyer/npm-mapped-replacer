@@ -1,0 +1,33 @@
+{
+	"name": "mapped-replacer",
+	"version": "1.0.0",
+	"description": "Zero-dependency Map and RegExp based string replacer with Unicode support.",
+	"main": "index.js",
+	"scripts": {
+		"test": "mocha --slow 0",
+		"benchmark": "node ./benchmark/index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/igorskyflyer/npm-mapped-replacer.git"
+	},
+	"keywords": [
+		"replace",
+		"map",
+		"unicode",
+		"regexp",
+		"string"
+	],
+	"author": "Igor Dimitrijević",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/igorskyflyer/npm-mapped-replacer/issues"
+	},
+	"homepage": "https://github.com/igorskyflyer/npm-mapped-replacer#readme",
+	"devDependencies": {
+		"chai": "^4.2.0",
+		"mocha": "^6.2.0",
+		"benchmark": "^2.1.4",
+		"beautify-benchmark": "^0.2.4"
+	}
+}
