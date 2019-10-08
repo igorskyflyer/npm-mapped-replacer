@@ -115,7 +115,11 @@ class MappedReplacer {
 			return false
 		}
 
-		return this.map.delete(key)
+		const result = this.map.delete(key)
+
+		this.updateRules()
+
+		return result
 	}
 
 	/**
@@ -141,10 +145,12 @@ class MappedReplacer {
 	 * @returns {string}
 	 */
 	replace(input) {
-		if (typeof input !== 'string' || input.length === 0) {
+		if (typeof input !== 'string') {
 			return ''
 		} else {
-			if (this.rulesCount() === 0) {
+			const count = input.length
+
+			if (count === 0 || this.rulesCount() === 0) {
 				return input || ''
 			}
 
@@ -152,7 +158,6 @@ class MappedReplacer {
 				return input
 			}
 
-			const count = input.length
 			let match = null
 			let lastIndex = 0
 			let current = null
