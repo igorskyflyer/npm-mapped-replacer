@@ -7,6 +7,10 @@
  *
  */
 
+function escapeRegExp(expression) {
+	return expression.replace(/[.*?+^$()\[\]{}\\|]/g, '\\$&')
+}
+
 /**
  * MappedReplacer class.
  */
@@ -36,11 +40,7 @@ class MappedReplacer {
 		let chars = ''
 
 		while (!key.done) {
-			if (key.value === '|') {
-				chars += '\\|'
-			} else {
-				chars += key.value
-			}
+			chars += escapeRegExp(key.value)
 
 			key = keyIterator.next()
 
@@ -63,7 +63,7 @@ class MappedReplacer {
 			return false
 		}
 
-		this.map.set(key, value)
+		this.map.set(escapeRegExp(key), value)
 		this.updateRules()
 
 		return true
