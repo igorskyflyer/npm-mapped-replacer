@@ -63,7 +63,7 @@ class MappedReplacer {
 			return false
 		}
 
-		this.map.set(escapeRegExp(key), value)
+		this.map.set(key, value)
 		this.updateRules()
 
 		return true
