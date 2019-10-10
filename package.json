@@ -1,11 +1,12 @@
 {
 	"name": "mapped-replacer",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "Zero-dependency Map and RegExp based string replacer with Unicode support.",
 	"main": "index.js",
 	"scripts": {
 		"test": "mocha --slow 0",
-		"benchmark": "node ./benchmark/index.js"
+		"benchmark": "node ./benchmark/index.js",
+		"postpack": "del release\\*.tgz && move mapped-replacer*.tgz release"
 	},
 	"repository": {
 		"type": "git",
