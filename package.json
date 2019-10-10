@@ -6,7 +6,9 @@
 	"scripts": {
 		"test": "mocha --slow 0",
 		"benchmark": "node ./benchmark/index.js",
-		"postpack": "del release\\*.tgz && move mapped-replacer*.tgz release"
+		"postpack": "del release\\*.tgz && move mapped-replacer*.tgz release",
+		"publish": "npm publish",
+		"build": "npm pack && npm run publish"
 	},
 	"repository": {
 		"type": "git",
