@@ -16,6 +16,14 @@
 				"showReuseMessage": false,
 				"clear": true
 			}
+		},
+		{
+			"type": "npm",
+			"script": "build",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
 		}
 	]
 }
