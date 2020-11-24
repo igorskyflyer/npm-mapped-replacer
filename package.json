@@ -6,9 +6,7 @@
 	"scripts": {
 		"test": "mocha --slow 0",
 		"benchmark": "node ./benchmark/index.js",
-		"postpack": "if exist mapped-replacer*.tgz (move mapped-replacer*.tgz release)",
-		"publish": "npm publish",
-		"build": "npm pack && npm publish"
+		"party": "npm test && npm publish"
 	},
 	"repository": {
 		"type": "git",
@@ -28,9 +26,9 @@
 	},
 	"homepage": "https://github.com/igorskyflyer/npm-mapped-replacer#readme",
 	"devDependencies": {
-		"chai": "^4.2.0",
-		"mocha": "^6.2.0",
+		"beautify-benchmark": "^0.2.4",
 		"benchmark": "^2.1.4",
-		"beautify-benchmark": "^0.2.4"
+		"chai": "^4.2.0",
+		"mocha": "^8.2.1"
 	}
 }
