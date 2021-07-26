@@ -4,6 +4,7 @@
 	],
 	"compilerOptions": {
 		"target": "ES2015",
+		"moduleResolution": "Node",
 		"allowJs": true,
 		"checkJs": true,
 		"declaration": true,
