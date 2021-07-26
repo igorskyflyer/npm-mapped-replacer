@@ -70,9 +70,9 @@ class MappedReplacer {
   }
 
   /**
-   * Adds an array of rules or updates the existing rules for character replacing.
+   * Adds rules or updates the existing rules for character replacing.
    *
-   * Passed objects are simple key-value objects, i.e. { '<': '\&#60;' }
+   * Passed object is a simple key-value object, i.e. { '<': '\&#60;', '>': '\&#62;' }
    * @param {Object} rules
    * @return {boolean}
    */
