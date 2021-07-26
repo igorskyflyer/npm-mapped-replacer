@@ -1,6 +1,6 @@
 {
 	"name": "mapped-replacer",
-	"version": "1.0.8",
+	"version": "1.0.9",
 	"description": "🗺 Zero-dependency Map and RegExp based string replacer with Unicode support. 🍁",
 	"main": "mapped-replacer.js",
 	"files": [
