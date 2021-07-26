@@ -1,0 +1,13 @@
+{
+	"include": [
+		"./*.js",
+	],
+	"compilerOptions": {
+		"target": "ES2015",
+		"allowJs": true,
+		"checkJs": true,
+		"declaration": true,
+		"emitDeclarationOnly": true,
+		"outDir": "dist"
+	}
+}
