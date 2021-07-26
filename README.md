@@ -49,11 +49,11 @@ console.log(mapper.replace('Hello world :smile:')) // outputs 'Hello world 😀'
 
 <br>
 
-#### addRules(rules: Object[]): boolean
+#### addRules(rules: Object): boolean
 
-_Adds an array of rules or updates the existing rules for character replacing._
+_Adds rules or updates the existing rules for character replacing._
 <br>
-_Passed objects are simple key-value objects, i.e. { '<': '\&#60;' }_
+_Passed object is a simple key-value object, i.e. { '<': '\&#60;', '>': '\&#62;'}_
 
 ```javascript
 const MappedReplacer = require('mapped-replacer')
