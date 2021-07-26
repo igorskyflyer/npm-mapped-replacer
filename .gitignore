@@ -6,8 +6,5 @@
 /assets/
 ## Release directory
 /release/
-
-# Files
-
-## NPM Ignore
-.npmignore
+.vscode/
+dist/
