@@ -1,6 +1,6 @@
 {
 	"name": "mapped-replacer",
-	"version": "1.0.9",
+	"version": "1.0.10",
 	"description": "🗺 Zero-dependency Map and RegExp based string replacer with Unicode support. 🍁",
 	"main": "mapped-replacer.js",
 	"files": [
@@ -10,7 +10,7 @@
 	"types": "./dist/mapped-replacer.d.ts",
 	"scripts": {
 		"test": "mocha --slow 0",
-		"pub": "npm test && npm publish"
+		"pub": "npm test && tsc && npm publish"
 	},
 	"repository": {
 		"type": "git",
