@@ -1,4 +1,4 @@
-const MappedReplacer = require('../mapped-replacer')
+const MappedReplacer = require('../src/index.js')
 const assert = require('chai').assert
 
 const htmlDocument = `
