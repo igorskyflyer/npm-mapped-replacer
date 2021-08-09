@@ -1,4 +1,4 @@
-const MappedReplacer = require('../mapped-replacer')
+const MappedReplacer = require('../src/index.js')
 const assert = require('chai').assert
 
 describe('examples', () => {
@@ -49,7 +49,7 @@ describe('examples', () => {
   })
 
   describe('clearRules()', () => {
-    it('shouldn return 0', () => {
+    it('should return 0', () => {
       const mapper = new MappedReplacer()
 
       mapper.addRule('𝕋', '&#120139;')
