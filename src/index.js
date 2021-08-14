@@ -24,7 +24,9 @@ export class MappedReplacer {
    * Creates a new instance of MappedReplacer.
    */
   constructor() {
+    /** @type {Map<string, string>} */
     this.map = new Map()
+    /** @type {RegExp|null} */
     this.expression = null
   }
 
