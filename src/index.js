@@ -7,6 +7,11 @@
  *
  */
 
+/**
+ * @private
+ * @param {string} expression
+ * @returns {string}
+ */
 function escapeRegExp(expression) {
   return expression.replace(/[.*?+^$()\[\]{}\\|]/g, '\\$&')
 }
@@ -14,7 +19,7 @@ function escapeRegExp(expression) {
 /**
  * MappedReplacer class.
  */
-class MappedReplacer {
+export class MappedReplacer {
   /**
    * Creates a new instance of MappedReplacer.
    */
@@ -73,12 +78,12 @@ class MappedReplacer {
    * Adds rules or updates the existing rules for character replacing.
    *
    * Passed object is a simple key-value object, i.e. { '<': '\&#60;', '>': '\&#62;' }
-   * @param {Object} rules
+   * @param {Object.<string, string>} rules
    * @return {boolean}
    */
   addRules(rules) {
     if (typeof rules !== 'object') {
-      return
+      return false
     }
 
     const keys = Object.keys(rules)
@@ -111,7 +116,7 @@ class MappedReplacer {
    * @returns {boolean}
    */
   removeRule(key) {
-    if (!(typeof key === 'string')) {
+    if (typeof key !== 'string') {
       return false
     }
 
@@ -145,7 +150,7 @@ class MappedReplacer {
    * @returns {string}
    */
   replace(input) {
-    if (typeof input !== 'string') {
+    if (typeof input !== 'string' || this.expression == null) {
       return ''
     } else {
       const count = input.length
@@ -191,5 +196,3 @@ class MappedReplacer {
     }
   }
 }
-
-module.exports = MappedReplacer
