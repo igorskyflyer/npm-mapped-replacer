@@ -1,5 +1,5 @@
-const MappedReplacer = require('../src/index.js')
-const assert = require('chai').assert
+import { assert } from 'chai'
+import { MappedReplacer } from '../src/index.js'
 
 describe('examples', () => {
   describe('addRule()', () => {
