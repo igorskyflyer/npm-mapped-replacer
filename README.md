@@ -6,7 +6,11 @@ _Zero-dependency Map and RegExp based string replacer with Unicode support._
 
 <br>
 
-✨Since version `1.1.0` `Mapped Replacer` is a hybrid module that supports both CommonJS (legacy) and ES modules, thanks to [Modern Module](https://github.com/igorskyflyer/npm-modern-module).
+Requires ES6 or later, for compatibility check this [Can I Use](https://caniuse.com/mdn-javascript_builtins_map_set) link.
+
+<br>
+
+✨Since `v.1.1.0` `Mapped Replacer` is a hybrid module that supports both CommonJS (legacy) and ES modules, thanks to [Modern Module](https://github.com/igorskyflyer/npm-modern-module).
 
 <br>
 
@@ -42,7 +46,7 @@ npm i mapped-replacer
 _Adds a new rule or updates the existing rule for character replacing._
 
 ```javascript
-const MappedReplacer = require('mapped-replacer')
+import { MappedReplacer } from 'mapped-replacer'
 
 const mapper = new MappedReplacer()
 
@@ -60,7 +64,7 @@ _Adds rules or updates the existing rules for character replacing._
 _Passed object is a simple key-value object, i.e. { '<': '\&#60;', '>': '\&#62;'}_
 
 ```javascript
-const MappedReplacer = require('mapped-replacer')
+import { MappedReplacer } from 'mapped-replacer'
 
 const mapper = new MappedReplacer()
 
@@ -80,7 +84,7 @@ console.log(mapper.replace('𝕋 ≈ 𝔱')) // outputs '&#120139; &#8776; &#120
 _Removes the rule that matches the provided key._
 
 ```javascript
-const MappedReplacer = require('mapped-replacer')
+import { MappedReplacer } from 'mapped-replacer'
 
 const mapper = new MappedReplacer()
 
@@ -99,7 +103,7 @@ console.log(mapper.replace('𝕋 ≈ 𝔱')) // outputs '𝕋 &#8776; 𝔱'
 _Gets the number of rules for character replacing._
 
 ```javascript
-const MappedReplacer = require('mapped-replacer')
+import { MappedReplacer } from 'mapped-replacer'
 
 const mapper = new MappedReplacer()
 
@@ -115,7 +119,7 @@ console.log(mapper.rulesCount()) // outputs 1
 _Clears all the rules._
 
 ```javascript
-const MappedReplacer = require('mapped-replacer')
+import { MappedReplacer } from 'mapped-replacer'
 
 const mapper = new MappedReplacer()
 
@@ -132,7 +136,7 @@ console.log(mapper.rulesCount()) // outputs 0
 _Replaces the values in the input that match the keys in the Map object._
 
 ```javascript
-const MappedReplacer = require('mapped-replacer')
+import { MappedReplacer } from 'mapped-replacer'
 
 const mapper = new MappedReplacer()
 
