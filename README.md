@@ -150,5 +150,6 @@ console.log(mapper.replace('a → b')) // outputs 'a &#8594; b'
 ### Test
 
 ```
+npm i
 npm test
 ```
