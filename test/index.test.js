@@ -1,3 +1,5 @@
+// @ts-check
+
 import { assert } from 'chai'
 import { MappedReplacer } from '../src/index.js'
 
@@ -100,6 +102,18 @@ describe('library', () => {
 
   describe('addRules()', () => {
     describe('addRules({})', () => {
+      it('should use the new rules', () => {
+        mapper.addRules({
+          '𝕋': '&#120139;',
+          '≈': '&#8776;',
+          '𝔱': '&#120113;',
+        })
+        const result = mapper.replace('𝕋 ≈ 𝔱')
+        assert.equal(result, '&#120139; &#8776; &#120113;')
+      })
+    })
+
+    describe('addRules({string[]: string})', () => {
       it('should use the new rules', () => {
         mapper.addRules({
           '𝕋': '&#120139;',
