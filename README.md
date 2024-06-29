@@ -157,9 +157,9 @@ Licensed under the MIT license which is available here, [MIT license](https://gi
 
 > _🧠 Zep is a zero-dependency, efficient debounce module. ⏰_
 
-[@igor.dvlpr/hybridize](https://www.npmjs.com/package/@igor.dvlpr/hybridize)
+[@igor.dvlpr/strip-html](https://www.npmjs.com/package/@igor.dvlpr/strip-html)
 
-> _🧬 Hybridize is a simple CLI that I use internally as a part of my Modern Module repository and Robby - another CLI tool. ⚡_
+> _🥞 Removes HTML code from the given string. Can even extract text-only from the given an HTML string. ✨_
 
 [@igor.dvlpr/registry-apppaths](https://www.npmjs.com/package/@igor.dvlpr/registry-apppaths)
 
