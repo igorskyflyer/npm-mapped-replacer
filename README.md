@@ -6,6 +6,11 @@ _Zero-dependency Map and RegExp based string replacer with Unicode support._
 
 <br>
 
+> This package has been deprecated, please use [@igor.dvlpr/mapped-replacer](https://www.npmjs.com/package/@igor.dvlpr/mapped-replacer) instead.
+
+
+<br>
+
 Requires ES6 or later, for compatibility check this [Can I Use](https://caniuse.com/mdn-javascript_builtins_map_set) link.
 
 <br>
