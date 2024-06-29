@@ -1,55 +1,47 @@
 {
-	"name": "mapped-replacer",
-	"version": "1.2.2",
+	"name": "@igor.dvlpr/mapped-replacer",
+	"version": "1.0.0",
 	"description": "🗺 Zero-dependency Map and RegExp based string replacer with Unicode support. 🍁",
-	"type": "module",
-	"engines": {
-		"node": ">=12.17"
-	},
 	"sideEffects": false,
-	"main": "./dist/compat/index.js",
-	"exports": {
-		".": {
-			"require": "./dist/compat/index.js",
-			"import": "./dist/module/index.js"
-		}
+	"engines": {
+		"node": ">=20.0"
 	},
-	"module": "./dist/module/index.js",
-	"types": "./dist/types",
+	"types": "./dist/index.d.mts",
+	"main": "./dist/index.mjs",
+	"module": "./dist/index.mjs",
 	"files": [
 		"dist"
 	],
 	"scripts": {
-		"cjs": "tsc -m CommonJS --outDir ./dist/compat && hybridize --out ./dist/compat --module cjs --overwrite",
-		"esm": "tsc -m ES6 --outDir ./dist/module",
-		"dts": "tsc --d --emitDeclarationOnly --declarationDir ./dist/types",
-		"build": "npm run cjs && npm run esm && npm run dts",
-		"test": "mocha",
-		"pub": "npm test && npm run build && npm publish"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/igorskyflyer/npm-mapped-replacer.git"
+		"build": "tsc",
+		"test": "vitest --run",
+		"debug": "vitest",
+		"pub": "npm test && npm run build && npm publish --access public"
 	},
 	"keywords": [
 		"replace",
 		"map",
 		"unicode",
 		"regexp",
-		"string"
+		"string",
+		"igorskyflyer",
+		"igor.dvlpr"
 	],
-	"author": "Igor Dimitrijević",
 	"license": "MIT",
+	"author": "Igor Dimitrijević <igor.dvlpr@gmail.com> (https://github.com/igorskyflyer)",
+	"funding": "https://ko-fi.com/igorskyflyer",
+	"homepage": "https://github.com/igorskyflyer/npm-mapped-replacer",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/igorskyflyer/npm-mapped-replacer.git"
+	},
 	"bugs": {
 		"url": "https://github.com/igorskyflyer/npm-mapped-replacer/issues"
 	},
-	"homepage": "https://github.com/igorskyflyer/npm-mapped-replacer#readme",
 	"devDependencies": {
-		"@igor.dvlpr/hybridize": "^1.0.0",
-		"@types/chai": "^4.3.3",
-		"@types/mocha": "^9.1.1",
-		"chai": "^4.3.6",
-		"mocha": "^10.0.0",
-		"typescript": "^4.7.4"
+		"@biomejs/biome": "^1.8.3",
+		"@types/node": "^20.14.9",
+		"typescript": "^5.5.2",
+		"vitest": "^1.6.0"
 	}
 }
