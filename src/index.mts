@@ -24,16 +24,16 @@ export class MappedReplacer {
 	}
 
 	#updateRules() {
-		const count = this.rulesCount()
+		const count: number = this.rulesCount()
 
 		if (count === 0) {
 			this.#expression = new RegExp('[]', 'gu')
 			return
 		}
 
-		const keyIterator = this.#map.keys()
-		let key = keyIterator.next()
-		let chars = ''
+		const keyIterator: IterableIterator<string> = this.#map.keys()
+		let key: IteratorResult<string, any> = keyIterator.next()
+		let chars: string = ''
 
 		while (!key.done) {
 			chars += escapeRegExp(key.value)
@@ -72,17 +72,17 @@ export class MappedReplacer {
 			return false
 		}
 
-		const keys = Object.keys(rules)
-		const count = keys.length
-		let needsUpdating = false
+		const keys: string[] = Object.keys(rules)
+		const count: number = keys.length
+		let needsUpdating: boolean = false
 
 		for (let i = 0; i < count; i++) {
 			if (typeof keys[i] !== 'string' || typeof rules[keys[i]] !== 'string') {
 				continue
 			}
 
-			const key = keys[i]
-			const value = rules[key]
+			const key: string = keys[i]
+			const value: string = rules[key]
 
 			this.#map.set(key, value)
 
@@ -104,7 +104,7 @@ export class MappedReplacer {
 			return false
 		}
 
-		const result = this.#map.delete(key)
+		const result: boolean = this.#map.delete(key)
 
 		this.#updateRules()
 
@@ -134,7 +134,7 @@ export class MappedReplacer {
 			return ''
 		}
 
-		const count = input.length
+		const count: number = input.length
 
 		if (count === 0 || this.rulesCount() === 0) {
 			return input || ''
@@ -144,11 +144,11 @@ export class MappedReplacer {
 			return input
 		}
 
-		let match = null
-		let lastIndex = 0
-		let current = null
-		let currentIndex = -1
-		let result = ''
+		let match: RegExpExecArray | null = null
+		let lastIndex: number = 0
+		let current: string | null = null
+		let currentIndex: number = -1
+		let result: string = ''
 
 		this.#expression.lastIndex = 0
 
