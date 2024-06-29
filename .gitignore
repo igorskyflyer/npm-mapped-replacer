@@ -1,10 +1,2 @@
-# Directories
-
-## Node modules
 /node_modules/
-## Assets directory
 /assets/
-## Release directory
-/release/
-.vscode/
-dist/
