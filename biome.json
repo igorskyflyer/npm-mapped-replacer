@@ -20,10 +20,14 @@
 	},
 	"linter": {
 		"rules": {
+			"complexity": {
+				"useRegexLiterals": "off"
+			},
 			"style": {
 				"noInferrableTypes": "off"
 			},
 			"suspicious": {
+				"noAssignInExpressions": "off",
 				"noExplicitAny": "off"
 			}
 		}
