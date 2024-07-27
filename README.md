@@ -67,26 +67,62 @@ npm i "@igor.dvlpr/mapped-replacer"
 
 ## 🤹🏼 API
 
-### `addRule(key: string, value: string): boolean`
+### `addRule(replaceWith: string, searchFor: string): boolean`
 
-_Adds a new rule or updates the existing rule for character replacing._
+Adds a new rule or updates an existing rule used in replacing a single string.  
+
+`replaceWith` - The string to replace the `searchFor` with.  
+`searchFor` - The string to be replaced.  
+
+Returns true if the rule was added or updated successfully, false otherwise.
 
 ```ts
 import { MappedReplacer } from '@igor.dvlpr/mapped-replacer'
 
 const mapper: MappedReplacer = new MappedReplacer()
 
-mapper.addRule(':smile:', '😀')
+mapper.addRule('😀', ':smile:')
 
 console.log(mapper.replace('Hello world :smile:')) // outputs 'Hello world 😀'
 ```
 
 <br>
 
-### `addRules(rules: Object): boolean`
+### `addRule(replaceWith: string, searchFor: string[]): boolean`
 
-_Adds rules or updates the existing rules for character replacing._
-_Passed object is a simple key-value object, i.e. { '<': '\&#60;', '>': '\&#62;'}_
+Adds a new rule or updates an existing rule for character replacement with multiple subjects.  
+
+`replaceWith` - The string to replace the `searchFor` with.
+`searchFor` - The array of strings to be replaced.
+
+Returns true if the rule was added or updated successfully, false otherwise.
+
+```ts
+import { MappedReplacer } from '@igor.dvlpr/mapped-replacer'
+
+const mapper: MappedReplacer = new MappedReplacer()
+
+mapper.addRule('😀', [':smile:', ':D'])
+
+console.log(mapper.replace('Hello world :smile: :D')) // outputs 'Hello world 😀 😀'
+```
+
+---
+
+### `addRules(rules: { [key: string]: string }): boolean`
+
+Adds rules or updates the rules for character replacing.  
+
+`rules` - A simple key-value object, i.e.:  
+
+```ts
+{
+	'&#60;' : '<',
+	'&#62;' : '>'
+}
+```  
+
+Returns a Boolean whether the rules were added/updated successfully.
 
 ```ts
 import { MappedReplacer } from '@igor.dvlpr/mapped-replacer'
@@ -94,15 +130,46 @@ import { MappedReplacer } from '@igor.dvlpr/mapped-replacer'
 const mapper: MappedReplacer = new MappedReplacer()
 
 mapper.addRules({
-  '𝕋': '&#120139;',
-  '≈': '&#8776;',
-  '𝔱': '&#120113;',
+  '&#120139;' : '𝕋',
+  '&#8776;' : '≈',
+  '&#120113;' : '𝔱'
 })
 
 console.log(mapper.replace('𝕋 ≈ 𝔱')) // outputs '&#120139; &#8776; &#120113;'
 ```
 
 <br>
+
+
+### `addRules(rules: { [key: string]: string[] }): boolean`
+
+Adds rules or updates the rules for character replacing.  
+
+`rules` - A simple key-value[] object, i.e.:  
+
+```ts
+{
+	'😁' : [':D', ':-D'],
+	'😛' : [':P', ':-P']
+}
+```  
+
+Returns a Boolean whether the rules were added/updated successfully.
+
+```ts
+import { MappedReplacer } from '@igor.dvlpr/mapped-replacer'
+
+const mapper: MappedReplacer = new MappedReplacer()
+
+mapper.addRules({
+	'😁' : [':D', ':-D'],
+	'😛' : [':P', ':-P']
+})
+
+console.log(mapper.replace('Hello :D world :-D this is a :P test :-P')) // outputs 'Hello 😁 world 😁 this is a 😛 test 😛'
+```
+
+---
 
 ### `removeRule(key: string): boolean`
 
@@ -113,8 +180,8 @@ import { MappedReplacer } from '@igor.dvlpr/mapped-replacer'
 
 const mapper: MappedReplacer = new MappedReplacer()
 
-mapper.addRule('𝕋', '&#120139;')
-mapper.addRule('≈', '&#8776;')
+mapper.addRule('&#120139;', '𝕋')
+mapper.addRule('&#8776;', '≈')
 
 mapper.removeRule('𝕋')
 
@@ -132,7 +199,7 @@ import { MappedReplacer } from '@igor.dvlpr/mapped-replacer'
 
 const mapper: MappedReplacer = new MappedReplacer()
 
-mapper.addRule('𝕋', '&#120139;')
+mapper.addRule('&#120139;', '𝕋')
 
 console.log(mapper.rulesCount()) // outputs 1
 ```
@@ -148,7 +215,7 @@ import { MappedReplacer } from '@igor.dvlpr/mapped-replacer'
 
 const mapper: MappedReplacer = new MappedReplacer()
 
-mapper.addRule('𝕋', '&#120139;')
+mapper.addRule('&#120139;', '𝕋')
 mapper.clearRules()
 
 console.log(mapper.rulesCount()) // outputs 0
@@ -165,7 +232,7 @@ import { MappedReplacer } from '@igor.dvlpr/mapped-replacer'
 
 const mapper: MappedReplacer = new MappedReplacer()
 
-mapper.addRule('→', '&#8594;')
+mapper.addRule('&#8594;', '→')
 
 console.log(mapper.replace('a → b')) // outputs 'a &#8594; b'
 ```
@@ -180,7 +247,7 @@ import { MappedReplacer } from '@igor.dvlpr/mapped-replacer'
 
 const mapper: MappedReplacer = new MappedReplacer()
 
-mapper.addRule('→', '&#8594;')
+mapper.addRule('&#8594;', '→')
 
 console.log(mapper.replace('a → b')) // outputs 'a &#8594; b'
 ```
