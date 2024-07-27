@@ -235,10 +235,6 @@ export class MappedReplacer {
       return input || ''
     }
 
-    if (!this.#expression.test(input)) {
-      return input
-    }
-
     this.#expression.lastIndex = -1
 
     let match: RegExpExecArray | null = this.#expression.exec(input)
