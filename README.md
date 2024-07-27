@@ -76,7 +76,7 @@ Create a new instance of `MappedReplacer`.
 
 `options` is a variable of type `IOptions` defined as:
 
-- `caseSensitive` - a Boolean
+- `caseSensitive` - a Boolean that indicates whether replacing should case-sensitive or not. 
 
 ---
 
