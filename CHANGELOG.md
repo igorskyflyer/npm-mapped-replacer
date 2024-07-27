@@ -4,6 +4,15 @@
 
 <br>
 
+## v2.0.1
+
+<p align="right"><em>28-Jul-2024</em></p>
+
+- **✅ fix**: remove string testing before replacement
+
+<br>
+<br>
+
 ## v2.0.0
 
 <p align="right"><em>28-Jul-2024</em></p>
