@@ -19,6 +19,10 @@
 - **🪅 feat**: add `value -> string[]` mapping to [`addRules()`](./README.md#addrulereplacewith-string-searchfor-string-boolean) to allow mapping a single replacement value to multiple replace subjects
 
 <br>
+
+- **💻 dev**: upgrade devDependencies
+
+<br>
 <br>
 
 ## v1.0.0
