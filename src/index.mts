@@ -28,7 +28,7 @@ export class MappedReplacer {
     const count: number = this.rulesCount()
 
     if (count === 0) {
-      this.#expression = new RegExp('[]', 'gu')
+      this.#expression = null
       return
     }
 
