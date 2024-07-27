@@ -187,15 +187,16 @@ export class MappedReplacer {
   }
 
   /**
-   * Removes the rule that matches the provided key.
+   * Removes the rule that matches the provided value.
+   * @param searchFor The rule to remove.
    * @since v1.0.0
    */
-  removeRule(key: string): boolean {
-    if (typeof key !== 'string') {
+  removeRule(searchFor: string): boolean {
+    if (typeof searchFor !== 'string') {
       return false
     }
 
-    const result: boolean = this.#map.delete(key)
+    const result: boolean = this.#map.delete(searchFor)
 
     this.#updateRules()
 
@@ -203,7 +204,7 @@ export class MappedReplacer {
   }
 
   /**
-   * Gets the number of rules for character replacing.
+   * Gets the number of rules for string replacing.
    * @since v1.0.0
    */
   rulesCount(): number {
@@ -219,7 +220,8 @@ export class MappedReplacer {
   }
 
   /**
-   * Replaces the values in the input that match the keys in the Map object.
+   * Replaces the values in the input with the values from the Map.
+   * @param input The input string.
    * @since v1.0.0
    */
   replace(input: string): string {
