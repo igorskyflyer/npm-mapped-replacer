@@ -40,8 +40,11 @@
 
 - [Usage](#-usage)
 - [API](#-api)
-    - [addRule()](#addrulekey-string-value-string-boolean)
-    - [addRules()](#addrulesrules-object-boolean)
+    - [constructor(options: IOptions): MappedReplacer](#constructoroptions-ioptions---mappedreplacer)
+    - [addRule(replaceWith: string, searchFor: string)](#addrulereplacewith-string-searchfor-string-boolean)
+    - [addRule(replaceWith: string, searchFor: string[])](#addrulereplacewith-string-searchfor-string-boolean-1)
+    - [addRules(rules: RuleSingle)](#addrulesrules--key-string-string--boolean)
+    - [addRules(rules: RuleMultiple)](#addrulesrules--key-string-string--boolean-1)
     - [removeRule()](#removerulekey-string-boolean)
     - [rulesCount()](#rulescount-number)
     - [clearRules()](#clearrules-void)
@@ -66,6 +69,16 @@ npm i "@igor.dvlpr/mapped-replacer"
 <br>
 
 ## 🤹🏼 API
+
+### `constructor(options: IOptions = {}): MappedReplacer`
+
+Create a new instance of `MappedReplacer`.  
+
+`options` is a variable of type `IOptions` defined as:
+
+- `caseSensitive` - a Boolean
+
+---
 
 ### `addRule(replaceWith: string, searchFor: string): boolean`
 
