@@ -40,7 +40,7 @@
 
 - [Usage](#-usage)
 - [API](#-api)
-    - [constructor()](#constructoroptions-ioptions---mappedreplacer)
+    - [constructor()](#constructoroptions-ioptions-mappedreplacer)
     - [addRule(replaceWith: string, searchFor: string)](#addrulereplacewith-string-searchfor-string-boolean)
     - [addRule(replaceWith: string, searchFor: string[])](#addrulereplacewith-string-searchfor-string-boolean-1)
     - [addRules(rules: { [key: string]: string })](#addrulesrules--key-string-string--boolean)
@@ -70,7 +70,7 @@ npm i "@igor.dvlpr/mapped-replacer"
 
 ## 🤹🏼 API
 
-### `constructor(options: IOptions = {}): MappedReplacer`
+### `constructor(options: IOptions): MappedReplacer`
 
 *Create a new instance of `MappedReplacer`.*  
 
