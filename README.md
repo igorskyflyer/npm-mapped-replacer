@@ -70,7 +70,7 @@ npm i "@igor.dvlpr/mapped-replacer"
 
 ## 🤹🏼 API
 
-### `constructor(options: IOptions): MappedReplacer`
+### `constructor(options?: IOptions): MappedReplacer`
 
 *Create a new instance of `MappedReplacer`.*  
 
