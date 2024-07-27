@@ -45,7 +45,7 @@
     - [addRule(replaceWith: string, searchFor: string[])](#addrulereplacewith-string-searchfor-string-boolean-1)
     - [addRules(rules: RuleSingle)](#addrulesrules--key-string-string--boolean)
     - [addRules(rules: RuleMultiple)](#addrulesrules--key-string-string--boolean-1)
-    - [removeRule()](#removerulekey-string-boolean)
+    - [removeRule()](#removerulesearchfor-string-boolean)
     - [rulesCount()](#rulescount-number)
     - [clearRules()](#clearrules-void)
     - [replace()](#replaceinput-string-string)
@@ -200,7 +200,7 @@ console.log(mapper.replace('Hello :D world :-D this is a :P test :-P')) // outpu
 
 ---
 
-### `removeRule(key: string): boolean`
+### `removeRule(searchFor: string): boolean`
 
 *Removes the rule that matches the provided value.*  
 
