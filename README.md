@@ -40,7 +40,7 @@
 
 - [Usage](#-usage)
 - [API](#-api)
-    - [constructor(options: IOptions): MappedReplacer](#constructoroptions-ioptions---mappedreplacer)
+    - [constructor()](#constructoroptions-ioptions---mappedreplacer)
     - [addRule(replaceWith: string, searchFor: string)](#addrulereplacewith-string-searchfor-string-boolean)
     - [addRule(replaceWith: string, searchFor: string[])](#addrulereplacewith-string-searchfor-string-boolean-1)
     - [addRules(rules: RuleSingle)](#addrulesrules--key-string-string--boolean)
