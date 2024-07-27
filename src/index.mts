@@ -10,6 +10,7 @@ function escapeRegExp(expression: string): string {
 
 /**
  * MappedReplacer class.
+ * @since v1.0.0
  */
 export class MappedReplacer {
 	#map: Map<string, string>
@@ -50,6 +51,9 @@ export class MappedReplacer {
 
 	/**
 	 * Adds a new rule or updates the existing rule for character replacing.
+	 * @param key The value to replace.
+	 * @param value The value to replace with.
+	 * @since v1.0.0
 	 */
 	addRule(key: string, value: string): boolean {
 		if (typeof key !== 'string' || typeof value !== 'string') {
@@ -66,6 +70,7 @@ export class MappedReplacer {
 	 * Adds rules or updates the existing rules for character replacing.
 	 *
 	 * Passed object is a simple key-value object, i.e. { '<': '\&#60;', '>': '\&#62;' }
+	 * @since v1.0.0
 	 */
 	addRules(rules: { [key: string]: string }): boolean {
 		if (typeof rules !== 'object') {
@@ -98,6 +103,7 @@ export class MappedReplacer {
 
 	/**
 	 * Removes the rule that matches the provided key.
+	 * @since v1.0.0
 	 */
 	removeRule(key: string): boolean {
 		if (typeof key !== 'string') {
@@ -113,6 +119,7 @@ export class MappedReplacer {
 
 	/**
 	 * Gets the number of rules for character replacing.
+	 * @since v1.0.0
 	 */
 	rulesCount(): number {
 		return this.#map.size
@@ -128,6 +135,7 @@ export class MappedReplacer {
 
 	/**
 	 * Replaces the values in the input that match the keys in the Map object.
+	 * @since v1.0.0
 	 */
 	replace(input: string): string {
 		if (typeof input !== 'string' || this.#expression == null) {
@@ -144,15 +152,15 @@ export class MappedReplacer {
 			return input
 		}
 
-		let match: RegExpExecArray | null = null
+		this.#expression.lastIndex = -1
+
+		let match: RegExpExecArray | null = this.#expression.exec(input)
 		let lastIndex: number = 0
 		let current: string | null = null
 		let currentIndex: number = -1
 		let result: string = ''
 
-		this.#expression.lastIndex = 0
-
-		while ((match = this.#expression.exec(input))) {
+		while (match) {
 			current = match[0]
 			currentIndex = match.index
 
@@ -167,6 +175,8 @@ export class MappedReplacer {
 			if (lastIndex === count) {
 				break
 			}
+
+			match = this.#expression.exec(input)
 		}
 
 		if (lastIndex < count) {
