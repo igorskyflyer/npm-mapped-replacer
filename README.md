@@ -117,8 +117,8 @@ Adds rules or updates the rules for character replacing.
 
 ```ts
 {
-	'&#60;' : '<',
-	'&#62;' : '>'
+  '&#60;' : '<',
+  '&#62;' : '>'
 }
 ```  
 
@@ -149,8 +149,8 @@ Adds rules or updates the rules for character replacing.
 
 ```ts
 {
-	'😁' : [':D', ':-D'],
-	'😛' : [':P', ':-P']
+  '😁' : [':D', ':-D'],
+  '😛' : [':P', ':-P']
 }
 ```  
 
@@ -162,8 +162,8 @@ import { MappedReplacer } from '@igor.dvlpr/mapped-replacer'
 const mapper: MappedReplacer = new MappedReplacer()
 
 mapper.addRules({
-	'😁' : [':D', ':-D'],
-	'😛' : [':P', ':-P']
+  '😁' : [':D', ':-D'],
+  '😛' : [':P', ':-P']
 })
 
 console.log(mapper.replace('Hello :D world :-D this is a :P test :-P')) // outputs 'Hello 😁 world 😁 this is a 😛 test 😛'
