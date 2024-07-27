@@ -72,7 +72,7 @@ npm i "@igor.dvlpr/mapped-replacer"
 
 ### `constructor(options: IOptions = {}): MappedReplacer`
 
-Create a new instance of `MappedReplacer`.  
+*Create a new instance of `MappedReplacer`.*  
 
 <br>
 
@@ -84,7 +84,7 @@ Create a new instance of `MappedReplacer`.
 
 ### `addRule(replaceWith: string, searchFor: string): boolean`
 
-Adds a new rule or updates an existing rule used in replacing a single string.  
+*Adds a new rule or updates an existing rule used in replacing a single string.*  
 
 `replaceWith` - The string to replace the `searchFor` with.  
 
@@ -108,7 +108,7 @@ console.log(mapper.replace('Hello world :smile:')) // outputs 'Hello world 😀'
 
 ### `addRule(replaceWith: string, searchFor: string[]): boolean`
 
-Adds a new rule or updates an existing rule for character replacement with multiple subjects.  
+*Adds a new rule or updates an existing rule for character replacement with multiple subjects.*  
 
 `replaceWith` - The string to replace the `searchFor` with.  
 
@@ -132,7 +132,7 @@ console.log(mapper.replace('Hello world :smile: :D')) // outputs 'Hello world �
 
 ### `addRules(rules: { [key: string]: string }): boolean`
 
-Adds or updates the rules for string replacement.  
+*Adds or updates the rules for string replacement.*  
 
 `rules` - A simple key-value object, i.e.:  
 
@@ -168,7 +168,7 @@ console.log(mapper.replace('𝕋 ≈ 𝔱')) // outputs '&#120139; &#8776; &#120
 
 ### `addRules(rules: { [key: string]: string[] }): boolean`
 
-Adds or updates the rules for string replacement.  
+*Adds or updates the rules for string replacement.*  
 
 `rules` - A simple key-value[] object, i.e.:  
 
