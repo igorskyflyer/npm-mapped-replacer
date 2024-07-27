@@ -111,7 +111,7 @@ console.log(mapper.replace('Hello world :smile: :D')) // outputs 'Hello world �
 
 ### `addRules(rules: { [key: string]: string }): boolean`
 
-Adds rules or updates the rules for character replacing.  
+Adds or updates the rules for string replacement.  
 
 `rules` - A simple key-value object, i.e.:  
 
@@ -143,7 +143,7 @@ console.log(mapper.replace('𝕋 ≈ 𝔱')) // outputs '&#120139; &#8776; &#120
 
 ### `addRules(rules: { [key: string]: string[] }): boolean`
 
-Adds rules or updates the rules for character replacing.  
+Adds or updates the rules for string replacement.  
 
 `rules` - A simple key-value[] object, i.e.:  
 
