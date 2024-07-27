@@ -4,11 +4,19 @@
 
 <br>
 
-## v1.1.0
+## v2.0.0
 
-<p align="right"><em>27-Jul-2024</em></p>
+<p align="right"><em>28-Jul-2024</em></p>
 
-- **🪅 feat**: add `value -> string[]` mapping to [`addRules()`](./README.md#addrulesrules-object-boolean) to allow mapping a single replacement value to multiple replace subject
+- **❌ BREAKING**: change method signature of [`addRule()`](./README.md#addrulesrules--key-string-string--boolean)
+- **❌ BREAKING**: change method signature of [`addRules()`](./README.md#addrulesrules--key-string-string--boolean)
+
+<br>
+
+- **🪅 feat**: add options to constructor
+- **🪅 feat**: add case-sensitivity option
+- **🪅 feat**: add `value -> string[]` mapping to [`addRule()`](./README.md#addrulereplacewith-string-searchfor-string-boolean) to allow mapping a single replacement value to multiple replace subjects
+- **🪅 feat**: add `value -> string[]` mapping to [`addRules()`](./README.md#addrulereplacewith-string-searchfor-string-boolean) to allow mapping a single replacement value to multiple replace subjects
 
 <br>
 <br>
