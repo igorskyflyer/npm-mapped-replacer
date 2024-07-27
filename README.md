@@ -92,7 +92,7 @@ console.log(mapper.replace('Hello world :smile:')) // outputs 'Hello world 😀'
 
 Adds a new rule or updates an existing rule for character replacement with multiple subjects.  
 
-`replaceWith` - The string to replace the `searchFor` with.
+`replaceWith` - The string to replace the `searchFor` with.  
 `searchFor` - The array of strings to be replaced.
 
 Returns true if the rule was added or updated successfully, false otherwise.
