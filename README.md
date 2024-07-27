@@ -87,9 +87,12 @@ Create a new instance of `MappedReplacer`.
 Adds a new rule or updates an existing rule used in replacing a single string.  
 
 `replaceWith` - The string to replace the `searchFor` with.  
+
 `searchFor` - The string to be replaced.  
 
 Returns true if the rule was added or updated successfully, false otherwise.
+
+<br>
 
 ```ts
 import { MappedReplacer } from '@igor.dvlpr/mapped-replacer'
@@ -108,9 +111,12 @@ console.log(mapper.replace('Hello world :smile:')) // outputs 'Hello world 😀'
 Adds a new rule or updates an existing rule for character replacement with multiple subjects.  
 
 `replaceWith` - The string to replace the `searchFor` with.  
+
 `searchFor` - The array of strings to be replaced.
 
 Returns true if the rule was added or updated successfully, false otherwise.
+
+<br>
 
 ```ts
 import { MappedReplacer } from '@igor.dvlpr/mapped-replacer'
@@ -130,6 +136,8 @@ Adds or updates the rules for string replacement.
 
 `rules` - A simple key-value object, i.e.:  
 
+<br>
+
 ```ts
 {
   '&#60;' : '<',
@@ -138,6 +146,8 @@ Adds or updates the rules for string replacement.
 ```  
 
 Returns a Boolean whether the rules were added/updated successfully.
+
+<br>
 
 ```ts
 import { MappedReplacer } from '@igor.dvlpr/mapped-replacer'
@@ -162,6 +172,8 @@ Adds or updates the rules for string replacement.
 
 `rules` - A simple key-value[] object, i.e.:  
 
+<br>
+
 ```ts
 {
   '😁' : [':D', ':-D'],
@@ -170,6 +182,8 @@ Adds or updates the rules for string replacement.
 ```  
 
 Returns a Boolean whether the rules were added/updated successfully.
+
+<br>
 
 ```ts
 import { MappedReplacer } from '@igor.dvlpr/mapped-replacer'
@@ -188,7 +202,11 @@ console.log(mapper.replace('Hello :D world :-D this is a :P test :-P')) // outpu
 
 ### `removeRule(key: string): boolean`
 
-_Removes the rule that matches the provided key._
+*Removes the rule that matches the provided value.*  
+
+`searchFor` - The rule to remove.
+
+<br>
 
 ```ts
 import { MappedReplacer } from '@igor.dvlpr/mapped-replacer'
@@ -207,7 +225,9 @@ console.log(mapper.replace('𝕋 ≈ 𝔱')) // outputs '𝕋 &#8776; 𝔱'
 
 ### `rulesCount(): number`
 
-_Gets the number of rules for character replacing._
+*Gets the number of rules for string replacing.*
+
+<br>
 
 ```ts
 import { MappedReplacer } from '@igor.dvlpr/mapped-replacer'
@@ -223,7 +243,9 @@ console.log(mapper.rulesCount()) // outputs 1
 
 ### `clearRules(): void`
 
-_Clears all the rules._
+*Clears all the rules.*  
+
+<br>
 
 ```ts
 import { MappedReplacer } from '@igor.dvlpr/mapped-replacer'
@@ -240,7 +262,11 @@ console.log(mapper.rulesCount()) // outputs 0
 
 ### `replace(input: string): string`
 
-_Replaces the values in the input that match the keys in the Map object._
+*Replaces the values in the input with the values from the Map.*  
+
+`input` - The input string.
+
+<br>
 
 ```ts
 import { MappedReplacer } from '@igor.dvlpr/mapped-replacer'
