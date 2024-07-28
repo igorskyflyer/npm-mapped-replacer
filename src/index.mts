@@ -196,6 +196,24 @@ export class MappedReplacer {
   }
 
   /**
+   * Checks whether a rule is present in the Map.
+   * @param rule The rule to check for.
+   * @returns A Boolean indicating the existence of
+   * the given rule.
+   */
+  hasRule(rule: string): boolean {
+    if (typeof rule !== 'string') {
+      return false
+    }
+
+    if (this.#caseSensitive) {
+      return this.#map.has(rule)
+    }
+
+    return this.#map.has(rule.toLowerCase())
+  }
+
+  /**
    * Removes the rule that matches the provided value.
    * @param searchFor The rule to remove.
    * @since v1.0.0
