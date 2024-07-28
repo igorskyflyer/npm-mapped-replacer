@@ -94,7 +94,7 @@ export class MappedReplacer {
 
     if (this.#strict) {
       this.#expression = new RegExp(
-        `(?<!\w)${chars}(?!\w)`,
+        `(?<!\\w)${chars}(?!\\w)`,
         `gu${sensitiveFlag}`
       )
     } else {
