@@ -4,6 +4,15 @@
 
 <br>
 
+## v2.1.1
+
+<p align="right"><em>28-Jul-2024</em></p>
+
+- **✅ fix**: fix strict mode edge-case
+
+<br>
+<br>
+
 ## v2.1.0
 
 <p align="right"><em>28-Jul-2024</em></p>
