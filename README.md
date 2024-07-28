@@ -45,6 +45,7 @@
     - [addRule(replaceWith: string, searchFor: string[])](#addrulereplacewith-string-searchfor-string-boolean-1)
     - [addRules(rules: { [key: string]: string })](#addrulesrules--key-string-string--boolean)
     - [addRules(rules: { [key: string]: string[] })](#addrulesrules--key-string-string--boolean-1)
+    - [hasRule(rules: string)](#hasrulerule-string-boolean)
     - [removeRule()](#removerulesearchfor-string-boolean)
     - [rulesCount()](#rulescount-number)
     - [clearRules()](#clearrules-void)
@@ -198,6 +199,29 @@ mapper.addRules({
 })
 
 console.log(mapper.replace('Hello :D world :-D this is a :P test :-P')) // outputs 'Hello 😁 world 😁 this is a 😛 test 😛'
+```
+
+---
+
+### `hasRule(rule: string): boolean`
+
+*Checks whether a rule is present in the Map.*  
+
+`rule` - The rule to check for.  
+
+Returns a Boolean indicating the existence of the given rule.
+
+<br>
+
+```ts
+import { MappedReplacer } from '@igor.dvlpr/mapped-replacer'
+
+const mapper: MappedReplacer = new MappedReplacer()
+
+mapper.addRule('&#120139;', '𝕋')
+mapper.addRule('&#8776;', '≈')
+
+console.log(mapper.hasRule('𝕋')) // true
 ```
 
 ---
