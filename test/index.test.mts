@@ -236,4 +236,52 @@ describe('🧪 Mapped Replacer tests 🧪', () => {
       }) // #18
     })
   })
+
+  suite('hasRule()', () => {
+    suite('case-sensitive + true', () => {
+      test('#19 should return true', () => {
+        mapper.addRule('&#8594;', 'a')
+
+        const result: boolean = mapper.hasRule('a')
+
+        assert.isTrue(result)
+      }) // #19
+    })
+
+    suite('case-insensitive + true', () => {
+      test('#20 should return true', () => {
+        const insensitiveMapper: MappedReplacer = new MappedReplacer({
+          caseSensitive: false
+        })
+        insensitiveMapper.addRule('&#8594;', 'a')
+
+        const result: boolean = insensitiveMapper.hasRule('A')
+
+        assert.isTrue(result)
+      }) // #20
+    })
+
+    suite('case-sensitive + false', () => {
+      test('#21 should return false', () => {
+        mapper.addRule('&#8594;', 'a')
+
+        const result: boolean = mapper.hasRule('b')
+
+        assert.isFalse(result)
+      }) // #21
+    })
+
+    suite('case-insensitive + false', () => {
+      test('#22 should return false', () => {
+        const insensitiveMapper: MappedReplacer = new MappedReplacer({
+          caseSensitive: false
+        })
+        insensitiveMapper.addRule('&#8594;', 'a')
+
+        const result: boolean = insensitiveMapper.hasRule('B')
+
+        assert.isFalse(result)
+      }) // #22
+    })
+  })
 })
