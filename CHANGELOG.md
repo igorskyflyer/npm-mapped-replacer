@@ -4,6 +4,15 @@
 
 <br>
 
+## v2.2.0
+
+<p align="right"><em>28-Jul-2024</em></p>
+
+- **🪅 feat**: add [`hasRule()`](./README.md#hasrulerule-string-boolean) method
+
+<br>
+<br>
+
 ## v2.1.1
 
 <p align="right"><em>28-Jul-2024</em></p>
