@@ -200,6 +200,7 @@ export class MappedReplacer {
    * @param rule The rule to check for.
    * @returns A Boolean indicating the existence of
    * the given rule.
+   * @since v2.2.0
    */
   hasRule(rule: string): boolean {
     if (typeof rule !== 'string') {
@@ -240,6 +241,7 @@ export class MappedReplacer {
 
   /**
    * Clears all the rules.
+   * @since v1.0.0
    */
   clearRules(): void {
     this.#map.clear()
