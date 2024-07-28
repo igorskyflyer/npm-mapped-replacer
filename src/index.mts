@@ -2,8 +2,6 @@
 
 import type { IOptions } from './IOptions.js'
 
-// https://en.wikipedia.org/wiki/List_of_emoticons
-
 /**
  * Zero-dependency Map and RegExp based string replacer with Unicode support.
  */
@@ -25,7 +23,9 @@ function escapeRegExp(expression: string): string {
 export class MappedReplacer {
   #map: Map<string, string>
   #expression: RegExp | null
+
   #caseSensitive: boolean
+  #strict: boolean
 
   /**
    * Creates a new instance of MappedReplacer.
@@ -33,7 +33,9 @@ export class MappedReplacer {
   constructor(options: IOptions = {}) {
     this.#map = new Map()
     this.#expression = null
+
     this.#caseSensitive = options.caseSensitive ?? true
+    this.#strict = options.strict ?? false
   }
 
   #addMapRule(replaceWith: string, searchFor: string): void {
@@ -90,7 +92,14 @@ export class MappedReplacer {
       sensitiveFlag = 'i'
     }
 
-    this.#expression = new RegExp(`${chars}`, `gu${sensitiveFlag}`)
+    if (this.#strict) {
+      this.#expression = new RegExp(
+        `(?<!\w)${chars}(?!\w)`,
+        `gu${sensitiveFlag}`
+      )
+    } else {
+      this.#expression = new RegExp(chars, `gu${sensitiveFlag}`)
+    }
   }
 
   /**
