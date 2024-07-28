@@ -80,7 +80,7 @@ npm i "@igor.dvlpr/mapped-replacer"
 
 - `caseSensitive` - A Boolean that indicates whether replacing should be case-sensitive or not. Default is `true`.  
 
-- `strict` - A Boolean that indicates whether strict mode is enabled. In strict mode, only whole matches are replaced. Default is `false.
+- `strict` - A Boolean that indicates whether strict mode is enabled. In strict mode, only whole matches are replaced. Default is `false`.
 
 ---
 
