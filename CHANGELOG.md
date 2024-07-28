@@ -4,6 +4,15 @@
 
 <br>
 
+## v2.1.0
+
+<p align="right"><em>28-Jul-2024</em></p>
+
+- **🪅 feat**: add strict mode, only replace whole matches
+
+<br>
+<br>
+
 ## v2.0.1
 
 <p align="right"><em>28-Jul-2024</em></p>
