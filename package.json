@@ -1,6 +1,6 @@
 {
   "name": "@igor.dvlpr/mapped-replacer",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "🗺 Zero-dependency Map and RegExp based string replacer with Unicode support. 🍁",
   "sideEffects": false,
   "engines": {
