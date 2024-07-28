@@ -78,7 +78,9 @@ npm i "@igor.dvlpr/mapped-replacer"
 
 `options` is a variable of type `IOptions` defined as:
 
-- `caseSensitive` - a Boolean that indicates whether replacing should case-sensitive or not. 
+- `caseSensitive` - A Boolean that indicates whether replacing should be case-sensitive or not. Default is `true`.  
+
+- `strict` - A Boolean that indicates whether strict mode is enabled. In strict mode, only whole matches are replaced. Default is `false.
 
 ---
 
