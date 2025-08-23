@@ -83,7 +83,9 @@ constructor(options?: IOptions): MappedReplacer
 
 ### addRule()
 
-`addRule(replaceWith: string, searchFor: string): boolean`
+```ts
+addRule(replaceWith: string, searchFor: string): boolean
+```
 
 *Adds a new rule or updates an existing rule used in replacing a single string.*  
 
@@ -110,7 +112,9 @@ console.log(mapper.replace('Hello world :smile:')) // outputs 'Hello world 😀'
 
 ### addRule()
 
-`addRule(replaceWith: string, searchFor: string[]): boolean`
+```ts
+addRule(replaceWith: string, searchFor: string[]): boolean
+```
 
 *Adds a new rule or updates an existing rule for character replacement with multiple subjects.*  
 
@@ -136,7 +140,9 @@ console.log(mapper.replace('Hello world :smile: :D')) // outputs 'Hello world �
 
 ### addRules()
 
-`addRules(rules: { [key: string]: string }): boolean`
+```ts
+addRules(rules: { [key: string]: string }): boolean
+```
 
 *Adds or updates the rules for string replacement.*  
 
@@ -174,7 +180,9 @@ console.log(mapper.replace('𝕋 ≈ 𝔱')) // outputs '&#120139; &#8776; &#120
 
 ### addRules()
 
-`addRules(rules: { [key: string]: string[] }): boolean`
+```ts
+addRules(rules: { [key: string]: string[] }): boolean
+```
 
 *Adds or updates the rules for string replacement.*  
 
@@ -210,7 +218,9 @@ console.log(mapper.replace('Hello :D world :-D this is a :P test :-P')) // outpu
 
 ### hasRule()
 
-`hasRule(rule: string): boolean`
+```ts
+hasRule(rule: string): boolean
+```
 
 *Checks whether a rule is present in the Map.*  
 
@@ -235,7 +245,9 @@ console.log(mapper.hasRule('𝕋')) // true
 
 ### removeRule()
 
-`removeRule(searchFor: string): boolean`
+```ts
+removeRule(searchFor: string): boolean
+```
 
 *Removes the rule that matches the provided value.*  
 
@@ -260,7 +272,9 @@ console.log(mapper.replace('𝕋 ≈ 𝔱')) // outputs '𝕋 &#8776; 𝔱'
 
 ### rulesCount()
 
-`rulesCount(): number`
+```ts
+rulesCount(): number
+```
 
 *Gets the number of rules for string replacing.*
 
@@ -280,7 +294,9 @@ console.log(mapper.rulesCount()) // outputs 1
 
 ### clearRules()
 
-`clearRules(): void`
+```ts
+clearRules(): void
+```
 
 *Clears all the rules.*  
 
@@ -301,7 +317,9 @@ console.log(mapper.rulesCount()) // outputs 0
 
 ### replace(input: string)
 
-`replace(input: string): string`
+```ts
+replace(input: string): string
+```
 
 *Replaces the values in the input with the values from the Map.*  
 
