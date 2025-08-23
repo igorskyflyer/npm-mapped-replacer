@@ -65,7 +65,9 @@ npm i @igorskyflyer/mapped-replacer
 
 ### constructor
 
-`constructor(options?: IOptions): MappedReplacer`
+```ts
+constructor(options?: IOptions): MappedReplacer
+```
 
 *Creates a new instance of `MappedReplacer`.*  
 
