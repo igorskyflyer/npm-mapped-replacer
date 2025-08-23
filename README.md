@@ -1,4 +1,7 @@
-<h1 align="center">🗺 Mapped Replacer 🍁</h1>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/igorskyflyer/npm-mapped-replacer/main/media/mapped-replacer.png" alt="Icon of Mapped Replacer" width="256" height="256">
+<h1 align="center">Mapped Replacer</h1>
+</div>
 
 <br>
 
