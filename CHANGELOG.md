@@ -1,68 +1,51 @@
-## 📒 Changelog
+# 📒 Changelog
 
-### of [@igor.dvlpr/mapped-replacer](https://github.com/igorskyflyer/npm-mapped-replacer)
+### of [@igorskyflyer/mapped-replacer](https://github.com/igorskyflyer/npm-mapped-replacer)
+
+<br>
+
+## v2.2.0 (*28-Jul-2024*)
+
+- **🪅 feat**: add [`hasRule()`](./README.md#hasrule) method
 
 <br>
 
-## v2.2.0
-
-<p align="right"><em>28-Jul-2024</em></p>
-
-- **🪅 feat**: add [`hasRule()`](./README.md#hasrulerule-string-boolean) method
-
-<br>
-<br>
-
-## v2.1.1
-
-<p align="right"><em>28-Jul-2024</em></p>
+## v2.1.1 (*28-Jul-2024*)
 
 - **✅ fix**: fix strict mode edge-case
 
 <br>
-<br>
 
-## v2.1.0
-
-<p align="right"><em>28-Jul-2024</em></p>
+## v2.1.0 (*28-Jul-2024*)
 
 - **🪅 feat**: add strict mode, only replace whole matches
 
 <br>
-<br>
 
-## v2.0.1
-
-<p align="right"><em>28-Jul-2024</em></p>
+## v2.0.1 (*28-Jul-2024*)
 
 - **✅ fix**: remove string testing before replacement
 
 <br>
-<br>
 
-## v2.0.0
+## v2.0.0 (*28-Jul-2024*)
 
-<p align="right"><em>28-Jul-2024</em></p>
-
-- **❌ BREAKING**: change method signature of [`addRule()`](./README.md#addrulesrules--key-string-string--boolean)
-- **❌ BREAKING**: change method signature of [`addRules()`](./README.md#addrulesrules--key-string-string--boolean)
+- **❌ BREAKING**: change method signature of [`addRule()`](./README.md#addrule)
+- **❌ BREAKING**: change method signature of [`addRules()`](./README.md#addrules)
 
 <br>
 
 - **🪅 feat**: add options to constructor
 - **🪅 feat**: add case-sensitivity option
-- **🪅 feat**: add `value -> string[]` mapping to [`addRule()`](./README.md#addrulereplacewith-string-searchfor-string-boolean) to allow mapping a single replacement value to multiple replace subjects
-- **🪅 feat**: add `value -> string[]` mapping to [`addRules()`](./README.md#addrulereplacewith-string-searchfor-string-boolean) to allow mapping a single replacement value to multiple replace subjects
+- **🪅 feat**: add `value -> string[]` mapping to [`addRule()`](./README.md#addrule) to allow mapping a single replacement value to multiple replace subjects
+- **🪅 feat**: add `value -> string[]` mapping to [`addRules()`](./README.md#addrules) to allow mapping a single replacement value to multiple replace subjects
 
 <br>
 
 - **💻 dev**: upgrade devDependencies
 
 <br>
-<br>
 
-## v1.0.0
-
-<p align="right"><em>29-Jun-2024</em></p>
+## v1.0.0 (*29-Jun-2024*)
 
 - **🚀 launch**: initial release 🎉
