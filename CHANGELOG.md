@@ -4,6 +4,12 @@
 
 <br>
 
+## v3.0.0 (*23-Aug-2025*)
+
+
+
+<br>
+
 ## v2.2.0 (*28-Jul-2024*)
 
 - **🪅 feat**: add [`hasRule()`](./README.md#hasrule) method
