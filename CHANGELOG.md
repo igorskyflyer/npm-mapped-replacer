@@ -11,11 +11,9 @@
 - **🪅 feat**: add `updateRule` method
 
 <br>
-<br>
 
 - **✅ fix**: fix how `addRule` handles rules overwriting
 
-<br>
 <br>
 
 - **💻 dev**: refactor RegExp used for escaping
