@@ -1,7 +1,7 @@
 // Author: Igor Dimitrijević (@igorskyflyer)
 
 import { assert, beforeEach, describe, suite, test } from 'vitest'
-import { MappedReplacer } from '../src/index.mjs'
+import { MappedReplacer } from '../src/index.ts'
 
 const htmlDocument: string = `
 <html>
