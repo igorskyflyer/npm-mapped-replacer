@@ -89,13 +89,13 @@ constructor(options?: IOptions): MappedReplacer
 addRule(replaceWith: string, searchFor: string): boolean
 ```
 
-*Adds a new rule or updates an existing rule used in replacing a single string.*  
+*Adds a new rule used in replacing a single string.*  
 
 `replaceWith` - The string to replace the `searchFor` with.  
 
 `searchFor` - The string to be replaced.  
 
-Returns true if the rule was added or updated successfully, false otherwise.
+Returns true if the rule was added successfully, false otherwise.
 
 <br>
 
@@ -103,7 +103,6 @@ Returns true if the rule was added or updated successfully, false otherwise.
 import { MappedReplacer } from '@igorskyflyer/mapped-replacer'
 
 const mapper: MappedReplacer = new MappedReplacer()
-
 mapper.addRule('😀', ':smile:')
 
 console.log(mapper.replace('Hello world :smile:')) // outputs 'Hello world 😀'
@@ -118,13 +117,13 @@ console.log(mapper.replace('Hello world :smile:')) // outputs 'Hello world 😀'
 addRule(replaceWith: string, searchFor: string[]): boolean
 ```
 
-*Adds a new rule or updates an existing rule for character replacement with multiple subjects.*  
+*Adds a new rule for character replacement with multiple subjects.*  
 
 `replaceWith` - The string to replace the `searchFor` with.  
 
 `searchFor` - The array of strings to be replaced.
 
-Returns true if the rule was added or updated successfully, false otherwise.
+Returns true if the rule was added successfully, false otherwise.
 
 <br>
 
@@ -132,7 +131,6 @@ Returns true if the rule was added or updated successfully, false otherwise.
 import { MappedReplacer } from '@igorskyflyer/mapped-replacer'
 
 const mapper: MappedReplacer = new MappedReplacer()
-
 mapper.addRule('😀', [':smile:', ':D'])
 
 console.log(mapper.replace('Hello world :smile: :D')) // outputs 'Hello world 😀 😀'
@@ -143,10 +141,10 @@ console.log(mapper.replace('Hello world :smile: :D')) // outputs 'Hello world �
 ### addRules()
 
 ```ts
-addRules(rules: { [key: string]: string }): boolean
+addRules(rules: { [replaceWith: string]: string }): boolean
 ```
 
-*Adds or updates the rules for string replacement.*  
+*Adds rules for string replacement.*  
 
 `rules` - A simple key-value object, i.e.:  
 
@@ -159,7 +157,7 @@ addRules(rules: { [key: string]: string }): boolean
 }
 ```  
 
-Returns a Boolean whether the rules were added/updated successfully.
+Returns a Boolean whether the rules were added successfully.
 
 <br>
 
@@ -167,7 +165,6 @@ Returns a Boolean whether the rules were added/updated successfully.
 import { MappedReplacer } from '@igorskyflyer/mapped-replacer'
 
 const mapper: MappedReplacer = new MappedReplacer()
-
 mapper.addRules({
   '&#120139;' : '𝕋',
   '&#8776;' : '≈',
@@ -183,10 +180,10 @@ console.log(mapper.replace('𝕋 ≈ 𝔱')) // outputs '&#120139; &#8776; &#120
 ### addRules()
 
 ```ts
-addRules(rules: { [key: string]: string[] }): boolean
+addRules(rules: { [replaceWith: string]: string[] }): boolean
 ```
 
-*Adds or updates the rules for string replacement.*  
+*Adds rules for string replacement.*  
 
 `rules` - A simple key-value[] object, i.e.:  
 
@@ -199,7 +196,7 @@ addRules(rules: { [key: string]: string[] }): boolean
 }
 ```  
 
-Returns a Boolean whether the rules were added/updated successfully.
+Returns a Boolean whether the rules were added successfully.
 
 <br>
 
@@ -207,7 +204,6 @@ Returns a Boolean whether the rules were added/updated successfully.
 import { MappedReplacer } from '@igorskyflyer/mapped-replacer'
 
 const mapper: MappedReplacer = new MappedReplacer()
-
 mapper.addRules({
   '😁' : [':D', ':-D'],
   '😛' : [':P', ':-P']
@@ -236,7 +232,6 @@ Returns a Boolean indicating the existence of the given rule.
 import { MappedReplacer } from '@igorskyflyer/mapped-replacer'
 
 const mapper: MappedReplacer = new MappedReplacer()
-
 mapper.addRule('&#120139;', '𝕋')
 mapper.addRule('&#8776;', '≈')
 
@@ -261,10 +256,8 @@ removeRule(searchFor: string): boolean
 import { MappedReplacer } from '@igorskyflyer/mapped-replacer'
 
 const mapper: MappedReplacer = new MappedReplacer()
-
 mapper.addRule('&#120139;', '𝕋')
 mapper.addRule('&#8776;', '≈')
-
 mapper.removeRule('𝕋')
 
 console.log(mapper.replace('𝕋 ≈ 𝔱')) // outputs '𝕋 &#8776; 𝔱'
@@ -286,7 +279,6 @@ rulesCount(): number
 import { MappedReplacer } from '@igorskyflyer/mapped-replacer'
 
 const mapper: MappedReplacer = new MappedReplacer()
-
 mapper.addRule('&#120139;', '𝕋')
 
 console.log(mapper.rulesCount()) // outputs 1
@@ -308,7 +300,6 @@ clearRules(): void
 import { MappedReplacer } from '@igorskyflyer/mapped-replacer'
 
 const mapper: MappedReplacer = new MappedReplacer()
-
 mapper.addRule('&#120139;', '𝕋')
 mapper.clearRules()
 
@@ -333,7 +324,6 @@ replace(input: string): string
 import { MappedReplacer } from '@igorskyflyer/mapped-replacer'
 
 const mapper: MappedReplacer = new MappedReplacer()
-
 mapper.addRule('&#8594;', '→')
 
 console.log(mapper.replace('a → b')) // outputs 'a &#8594; b'
@@ -349,7 +339,6 @@ console.log(mapper.replace('a → b')) // outputs 'a &#8594; b'
 import { MappedReplacer } from '@igorskyflyer/mapped-replacer'
 
 const mapper: MappedReplacer = new MappedReplacer()
-
 mapper.addRule('&#8594;', '→')
 
 console.log(mapper.replace('a → b')) // outputs 'a &#8594; b'
