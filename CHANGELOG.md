@@ -4,9 +4,23 @@
 
 <br>
 
-## v3.0.0 (*23-Aug-2025*)
+## v3.0.0 (*28-Aug-2025*)
 
+- **🪅 feat**: add `longestMatchFirst` prop
+- **🪅 feat**: respect all Unicode characters when replacing
+- **🪅 feat**: add `updateRule` method
 
+<br>
+<br>
+
+- **✅ fix**: fix how `addRule` handles rules overwriting
+
+<br>
+<br>
+
+- **💻 dev**: refactor RegExp used for escaping
+- **💻 dev**: simplify alternations generating
+- **💻 dev**: refactor branching in multiple places
 
 <br>
 
