@@ -1,13 +1,13 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/igorskyflyer/npm-mapped-replacer/main/media/mapped-replacer.png" alt="Icon of Mapped Replacer" width="256" height="256">
-<h1 align="center">Mapped Replacer</h1>
+  <h1>Mapped Replacer</h1>
 </div>
 
 <br>
 
-<div align="center">
+<h4 align="center">
   🦗 Zero-dependency Map and RegExp based string replacer with Unicode support. 🍁
-</div>
+</h4>
 
 <br>
 <br>
@@ -16,6 +16,8 @@
 
 - [Features](#-features)
 - [Usage](#-usage)
+- [API](#-api)
+- [Examples](#️-examples)
 - [Changelog](#-changelog)
 - [Support](#-support)
 - [License](#-license)
@@ -337,9 +339,10 @@ mapper.addRule('&#8594;', '→')
 console.log(mapper.replace('a → b')) // outputs 'a &#8594; b'
 ```
 
----
+<br>
+<br>
 
-## ✨ Examples
+## 🗒️ Examples
 
 `example.ts`
 ```ts
@@ -364,7 +367,7 @@ console.log(mapper.replace('a → b')) // outputs 'a &#8594; b'
 
 ## 🪪 License
 
-Licensed under the MIT license which is available here, [MIT license](https://github.com/igorskyflyer/npm-mapped-replacer/blob/main/LICENSE.txt).
+Licensed under the MIT license which is available here, [MIT license](https://github.com/igorskyflyer/npm-mapped-replacer/blob/main/LICENSE).
 
 <br>
 <br>
