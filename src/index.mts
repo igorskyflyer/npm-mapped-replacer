@@ -5,12 +5,15 @@ import type { IOptions } from './IOptions.js'
 /**
  * Zero-dependency Map and RegExp based string replacer with Unicode support.
  */
+type SearchKeySingle = string
+type SearchKeyMultiple = string[]
+type SearchKey = SearchKeySingle | SearchKeyMultiple
 
-type RuleSingle = { [replaceWith: string]: string }
-type RuleMultiple = { [replaceWith: string]: string[] }
-type Rule = { [replaceWith: string]: string | string[] }
+type RuleSingle = { [replaceWith: string]: SearchKeySingle }
+type RuleMultiple = { [replaceWith: string]: SearchKeyMultiple }
+type Rule = { [replaceWith: string]: SearchKey }
 
-const rxEscapeChars: RegExp = /[.*?+^$()\[\]{}\\|]/g
+const rxEscapeChars: RegExp = /[.*?+^$()[\]{}\\|]/g
 
 function escapeRegExp(expression: string): string {
   return expression.replace(rxEscapeChars, '\\$&')
@@ -23,48 +26,61 @@ function escapeRegExp(expression: string): string {
 export class MappedReplacer {
   #map: Map<string, string>
   #expression: RegExp | null
-
   #caseSensitive: boolean
   #strict: boolean
 
-  /**
-   * Creates a new instance of MappedReplacer.
-   */
+  longestMatchFirst: boolean
+
   constructor(options: IOptions = {}) {
     this.#map = new Map()
     this.#expression = null
 
     this.#caseSensitive = options.caseSensitive ?? true
     this.#strict = options.strict ?? false
+
+    this.longestMatchFirst = options.longestMatchFirst ?? true
   }
 
-  #addMapRule(replaceWith: string, searchFor: string): void {
-    if (this.#caseSensitive) {
-      this.#map.set(replaceWith, searchFor)
-    } else {
-      this.#map.set(replaceWith.toLowerCase(), searchFor.toLowerCase())
+  #generateAlternations(): string {
+    let keys: SearchKeyMultiple = Array.from(this.#map.keys())
+
+    if (this.longestMatchFirst) {
+      keys = keys.sort(
+        (a: SearchKeySingle, b: SearchKeySingle) => b.length - a.length
+      )
     }
+
+    return keys.map(escapeRegExp).join('|')
   }
 
-  #addMultipleRules(replaceWith: string, searchFor: string[]): boolean {
-    const searchCount: number = searchFor.length
+  #getSearchKey(searchFor: SearchKeySingle): SearchKeySingle {
+    const key: SearchKeySingle = this.#caseSensitive
+      ? searchFor
+      : searchFor.toLowerCase()
 
-    if (searchCount === 0) {
-      return false
-    }
+    return key
+  }
 
-    for (let j = 0; j < searchCount; j++) {
-      if (typeof searchFor[j] !== 'string') {
-        continue
-      }
-
-      this.#addMapRule(searchFor[j], replaceWith)
-    }
-
+  #addMapRule(searchFor: SearchKeySingle, replaceWith: string): boolean {
+    this.#map.set(this.#getSearchKey(searchFor), replaceWith)
     return true
   }
 
-  #updateRules() {
+  #addMapRules(searchFor: SearchKeyMultiple, replaceWith: string): boolean {
+    let added: boolean = false
+
+    for (const key of searchFor) {
+      if (typeof key !== 'string' || key.length === 0) {
+        continue
+      }
+
+      added = this.#addMapRule(key, replaceWith)
+    }
+
+    return added
+  }
+
+  #updateRules(): void {
     const count: number = this.rulesCount()
 
     if (count === 0) {
@@ -72,34 +88,73 @@ export class MappedReplacer {
       return
     }
 
-    const keyIterator: IterableIterator<string> = this.#map.keys()
-    let key: IteratorResult<string, any> = keyIterator.next()
-    let chars: string = ''
-
-    while (!key.done) {
-      chars += escapeRegExp(key.value)
-
-      key = keyIterator.next()
-
-      if (count > 1 && key && !key.done) {
-        chars += '|'
-      }
-    }
-
-    let sensitiveFlag: string = ''
-
-    if (!this.#caseSensitive) {
-      sensitiveFlag = 'i'
-    }
+    const alternation: string = this.#generateAlternations()
+    const sensitiveFlag: string = this.#caseSensitive ? '' : 'i'
 
     if (this.#strict) {
       this.#expression = new RegExp(
-        `(?<!\\w)(?:${chars})(?!\\w)`,
+        `(?<![\\p{L}\\p{N}_])(?:${alternation})(?![\\p{L}\\p{N}_])`,
         `gu${sensitiveFlag}`
       )
     } else {
-      this.#expression = new RegExp(chars, `gu${sensitiveFlag}`)
+      this.#expression = new RegExp(`(?:${alternation})`, `gu${sensitiveFlag}`)
     }
+  }
+
+  #canInsertRule(searchFor: SearchKey, updateOnly: boolean = false): boolean {
+    let exists: boolean
+
+    if (Array.isArray(searchFor)) {
+      if (updateOnly) {
+        exists = searchFor.every((k: SearchKeySingle) => this.hasRule(k))
+      } else {
+        exists = searchFor.some((k: SearchKeySingle) => this.hasRule(k))
+      }
+    } else {
+      exists = this.hasRule(searchFor)
+    }
+
+    if (updateOnly) {
+      return exists
+    } else {
+      return !exists
+    }
+  }
+
+  #insertRule(
+    replaceWith: string,
+    searchFor: SearchKey,
+    updateOnly: boolean = false
+  ): boolean {
+    if (typeof replaceWith !== 'string') {
+      return false
+    }
+
+    if (typeof searchFor !== 'string' && !Array.isArray(searchFor)) {
+      return false
+    }
+
+    if (!this.#canInsertRule(searchFor, updateOnly)) {
+      return false
+    }
+
+    let changed: boolean = false
+
+    if (Array.isArray(searchFor)) {
+      changed = this.#addMapRules(searchFor, replaceWith)
+    } else {
+      if (searchFor.length === 0) {
+        return false
+      }
+
+      changed = this.#addMapRule(searchFor, replaceWith)
+    }
+
+    if (changed) {
+      this.#updateRules()
+    }
+
+    return changed
   }
 
   /**
@@ -110,8 +165,7 @@ export class MappedReplacer {
    * @returns {boolean} - Returns true if the rule was added or updated successfully, false otherwise.
    * @since v1.0.0
    */
-  addRule(replaceWith: string, searchFor: string): boolean
-
+  addRule(replaceWith: string, searchFor: SearchKeySingle): boolean
   /**
    * Adds a new rule or updates an existing rule for character replacement with multiple subjects.
    *
@@ -120,28 +174,9 @@ export class MappedReplacer {
    * @returns {boolean} - Returns true if the rule was added or updated successfully, false otherwise.
    * @since v2.0.0
    */
-  addRule(replaceWith: string, searchFor: string[]): boolean
-
-  addRule(replaceWith: string, searchFor: string | string[]): boolean {
-    if (typeof replaceWith !== 'string') {
-      return false
-    }
-
-    if (typeof searchFor !== 'string' && !Array.isArray(searchFor)) {
-      return false
-    }
-
-    if (Array.isArray(searchFor)) {
-      const result: boolean = this.#addMultipleRules(replaceWith, searchFor)
-      this.#updateRules()
-
-      return result
-    }
-
-    this.#addMapRule(searchFor, replaceWith)
-    this.#updateRules()
-
-    return true
+  addRule(replaceWith: string, searchFor: SearchKeyMultiple): boolean
+  addRule(replaceWith: string, searchFor: SearchKey): boolean {
+    return this.#insertRule(replaceWith, searchFor, false)
   }
 
   /**
@@ -159,33 +194,29 @@ export class MappedReplacer {
    */
   addRules(rules: RuleMultiple): boolean
   addRules(rules: Rule): boolean {
-    if (typeof rules !== 'object') {
+    if (typeof rules !== 'object' || rules == null) {
       return false
     }
 
-    const keys: string[] = Object.keys(rules)
-    const count: number = keys.length
+    const keys: SearchKeyMultiple = Object.keys(rules)
     let needsUpdating: boolean = false
 
-    for (let i = 0; i < count; i++) {
-      if (typeof keys[i] !== 'string') {
+    for (const replace of keys) {
+      if (typeof replace !== 'string') {
         continue
       }
 
-      const replace: string = keys[i]
-      const search: string | string[] = rules[replace]
-
-      if (typeof search !== 'string' && !Array.isArray(search)) {
-        continue
-      }
+      const search: SearchKey = rules[replace]
 
       if (Array.isArray(search)) {
-        this.#addMultipleRules(replace, search)
+        needsUpdating = this.#addMapRules(search, replace)
       } else if (typeof search === 'string') {
-        this.#addMapRule(search, replace)
-      }
+        if (search.length === 0) {
+          continue
+        }
 
-      needsUpdating = true
+        needsUpdating = this.#addMapRule(search, replace)
+      }
     }
 
     if (needsUpdating) {
@@ -195,23 +226,23 @@ export class MappedReplacer {
     return needsUpdating
   }
 
+  updateRule(replaceWith: string, searchFor: SearchKey): boolean {
+    return this.#insertRule(replaceWith, searchFor, true)
+  }
+
   /**
    * Checks whether a rule is present in the Map.
-   * @param rule The rule to check for.
+   * @param searchFor The rule to check for.
    * @returns A Boolean indicating the existence of
    * the given rule.
    * @since v2.2.0
    */
-  hasRule(rule: string): boolean {
-    if (typeof rule !== 'string') {
+  hasRule(searchFor: SearchKey): boolean {
+    if (typeof searchFor !== 'string') {
       return false
     }
 
-    if (this.#caseSensitive) {
-      return this.#map.has(rule)
-    }
-
-    return this.#map.has(rule.toLowerCase())
+    return this.#map.has(this.#getSearchKey(searchFor))
   }
 
   /**
@@ -219,16 +250,19 @@ export class MappedReplacer {
    * @param searchFor The rule to remove.
    * @since v1.0.0
    */
-  removeRule(searchFor: string): boolean {
+  removeRule(searchFor: SearchKeySingle): boolean {
     if (typeof searchFor !== 'string') {
       return false
     }
 
-    const result: boolean = this.#map.delete(searchFor)
+    const key: SearchKeySingle = this.#getSearchKey(searchFor)
 
-    this.#updateRules()
+    if (this.#map.delete(key)) {
+      this.#updateRules()
+      return true
+    }
 
-    return result
+    return false
   }
 
   /**
@@ -254,42 +288,41 @@ export class MappedReplacer {
    * @since v1.0.0
    */
   replace(input: string): string {
-    if (typeof input !== 'string' || this.#expression == null) {
+    if (typeof input !== 'string') {
       return ''
+    }
+
+    if (this.#expression == null) {
+      return input
     }
 
     const count: number = input.length
 
     if (count === 0 || this.rulesCount() === 0) {
-      return input || ''
+      return input
     }
 
-    this.#expression.lastIndex = -1
+    this.#expression.lastIndex = 0
 
     let match: RegExpExecArray | null = this.#expression.exec(input)
     let lastIndex: number = 0
-    let current: string | null = null
-    let currentIndex: number = -1
     let result: string = ''
 
     while (match) {
-      current = match[0]
-      currentIndex = match.index
+      const currentKey: string = match[0]
+      const currentIndex: number = match.index
 
       if (lastIndex < currentIndex) {
         result += input.substring(lastIndex, currentIndex)
       }
 
-      if (this.#caseSensitive) {
-        result += this.#map.get(current)
-      } else {
-        result += this.#map.get(current.toLowerCase())
-      }
+      const key: SearchKeySingle = this.#getSearchKey(currentKey)
 
-      lastIndex = currentIndex + current.length
+      result += this.#map.get(key) ?? currentKey
+      lastIndex = currentIndex + currentKey.length
 
       if (lastIndex === count) {
-        break
+        return result
       }
 
       match = this.#expression.exec(input)
