@@ -255,7 +255,8 @@ updateRule(replaceWith: string, searchFor: string[]): boolean
 
 *Updates an existing rule for character replacement with multiple subjects.*  
 
-`replaceWith` - The string to replace the `searchFor` with.
+`replaceWith` - The string to replace the `searchFor` with.  
+
 `searchFor` - The array of strings to be replaced.
 
 Returns true if the rule was updated, false otherwise.
