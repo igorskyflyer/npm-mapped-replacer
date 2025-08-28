@@ -15,4 +15,16 @@ export interface IOptions {
    * Default is `false`.
    */
   strict?: boolean
+  /**
+   * When `true`, overlapping search patterns are matched in order of
+   * longest pattern length first, rather than the order they were added.
+   *
+   * This prevents shorter patterns from "stealing" matches that should
+   * belong to longer, more specific patterns.
+   *
+   * @default true
+   *
+   * Use `false` only if you need strict insertion-order precedence.
+   */
+  longestMatchFirst?: boolean
 }
