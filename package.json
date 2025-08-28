@@ -1,20 +1,22 @@
 {
-    "name": "@igor.dvlpr/mapped-replacer",
-    "version": "2.2.0",
-    "description": "🗺 Zero-dependency Map and RegExp based string replacer with Unicode support. 🍁",
+    "name": "@igorskyflyer/mapped-replacer",
+    "version": "3.0.0",
+    "description": "🦗 Zero-dependency Map and RegExp based string replacer with Unicode support. 🍁",
     "sideEffects": false,
     "engines": {
-        "node": ">=20.0"
+        "node": ">=22.0"
     },
-    "types": "./dist/index.d.mts",
-    "main": "./dist/index.mjs",
-    "module": "./dist/index.mjs",
-    "files": ["dist"],
+    "type": "module",
+    "types": "./dist/index.d.ts",
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "build": "tsc",
         "test": "vitest --run",
-        "debug": "vitest",
-        "pub": "npm test && npm run build && npm publish --access public"
+        "pub": "pnpm test && git push origin main --tags"
     },
     "keywords": [
         "replace",
@@ -22,11 +24,19 @@
         "unicode",
         "regexp",
         "string",
-        "igorskyflyer",
-        "igor.dvlpr"
+        "string-replace",
+        "search-and-replace",
+        "regex-replace",
+        "unicode-support",
+        "zero-dependencies",
+        "typescript",
+        "es-module",
+        "lightweight",
+        "performance",
+        "igorskyflyer"
     ],
     "license": "MIT",
-    "author": "Igor Dimitrijević <igor.dvlpr@gmail.com> (https://github.com/igorskyflyer)",
+    "author": "Igor Dimitrijević <support@igorskyflyer.me> (https://github.com/igorskyflyer)",
     "funding": "https://ko-fi.com/igorskyflyer",
     "homepage": "https://github.com/igorskyflyer/npm-mapped-replacer",
     "repository": {
@@ -37,10 +47,14 @@
         "url": "https://github.com/igorskyflyer/npm-mapped-replacer/issues"
     },
     "devDependencies": {
-        "@biomejs/biome": "^1.8.3",
-        "@igor.dvlpr/biome-config-igorskyflyer": "^1.0.0",
-        "@types/node": "^20.14.12",
-        "typescript": "^5.5.4",
-        "vitest": "^2.0.4"
-    }
+        "@biomejs/biome": "^2.2.2",
+        "@igorskyflyer/biome-config": "^2.1.0",
+        "@types/node": "^22.18.0",
+        "typescript": "^5.9.2",
+        "vitest": "^3.2.4"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "packageManager": "pnpm@10.15.0"
 }
