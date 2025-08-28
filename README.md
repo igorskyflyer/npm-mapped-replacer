@@ -218,6 +218,60 @@ console.log(mapper.replace('Hello :D world :-D this is a :P test :-P')) // outpu
 
 ---
 
+### updateRule
+
+```ts
+updateRule(replaceWith: string, searchFor: string): boolean
+```
+
+*Updates an existing rule used in replacing a single string.*  
+
+`replaceWith` - The string to replace the `searchFor` with.  
+
+`searchFor` - The string to be replaced.
+
+Returns true if the rule was updated, false otherwise.
+
+<br>
+
+```ts
+import { MappedReplacer } from '@igorskyflyer/mapped-replacer'
+
+const mapper: MappedReplacer = new MappedReplacer()
+mapper.addRule('🤨', ':smile:')
+mapper.updateRule('😀', ':smile:')
+
+console.log(mapper.replace('Hello world :smile:')) // outputs 'Hello world 😀'
+
+```
+
+<br>
+
+### updateRule()
+
+```ts
+updateRule(replaceWith: string, searchFor: string[]): boolean
+```
+
+*Updates an existing rule for character replacement with multiple subjects.*  
+
+`replaceWith` - The string to replace the `searchFor` with.
+`searchFor` - The array of strings to be replaced.
+
+Returns true if the rule was updated, false otherwise.
+
+```ts
+import { MappedReplacer } from '@igorskyflyer/mapped-replacer'
+
+const mapper: MappedReplacer = new MappedReplacer()
+mapper.addRule('🤨', [':smile:', ':D'])
+mapper.addRule('😀', [':smile:', ':D'])
+
+console.log(mapper.replace('Hello world :smile: :D')) // outputs 'Hello world 😀 😀'
+```
+
+---
+
 ### hasRule()
 
 ```ts
