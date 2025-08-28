@@ -65,7 +65,7 @@ npm i @igorskyflyer/mapped-replacer
 
 ## 🤹🏼 API
 
-> ❗ Important
+> ❗ **IMPORTANT**
 >
 > Why use `replaceWith` → `searchFor` instead of the usual `searchFor` → `replaceWith`?
 > 
