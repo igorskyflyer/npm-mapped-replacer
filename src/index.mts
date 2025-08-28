@@ -158,20 +158,20 @@ export class MappedReplacer {
   }
 
   /**
-   * Adds a new rule or updates an existing rule used in replacing a single string.
+   * Adds a new rule used in replacing a single string.
    *
    * @param {string} replaceWith - The string to replace the `searchFor` with.
    * @param {string} searchFor - The string to be replaced.
-   * @returns {boolean} - Returns true if the rule was added or updated successfully, false otherwise.
+   * @returns {boolean} - Returns true if the rule was added, false otherwise.
    * @since v1.0.0
    */
   addRule(replaceWith: string, searchFor: SearchKeySingle): boolean
   /**
-   * Adds a new rule or updates an existing rule for character replacement with multiple subjects.
+   * Adds a new rule for character replacement with multiple subjects.
    *
    * @param {string} replaceWith - The string to replace the `searchFor` with.
    * @param {string[]} searchFor - The array of strings to be replaced.
-   * @returns {boolean} - Returns true if the rule was added or updated successfully, false otherwise.
+   * @returns {boolean} - Returns true if the rule was added, false otherwise.
    * @since v2.0.0
    */
   addRule(replaceWith: string, searchFor: SearchKeyMultiple): boolean
@@ -180,16 +180,16 @@ export class MappedReplacer {
   }
 
   /**
-   * Adds or updates the rules for string replacement.
+   * Adds rules for string replacement.
    * @param rules A simple key-value object, i.e.: { '\&#60;' : '<', '\&#62;' : '>' }.
-   * @returns Returns a Boolean whether the rules were added/updated successfully.
+   * @returns Returns a Boolean whether the rules were added successfully.
    * @since v1.0.0
    */
   addRules(rules: RuleSingle): boolean
   /**
-   * Adds or updates the rules for string replacement.
+   * Adds rules for string replacement.
    * @param rules A simple key-value[] object, i.e.: { '😁' : [':D', ':-D'], '😛' : [':P', ':-P'] }.
-   * @returns Returns a Boolean whether the rules were added/updated successfully.
+   * @returns Returns a Boolean whether the rules were added successfully.
    * @since v2.0.0
    */
   addRules(rules: RuleMultiple): boolean
@@ -226,6 +226,24 @@ export class MappedReplacer {
     return needsUpdating
   }
 
+  /**
+   * Updates an existing rule used in replacing a single string.
+   *
+   * @param {string} replaceWith - The string to replace the `searchFor` with.
+   * @param {string} searchFor - The string to be replaced.
+   * @returns {boolean} - Returns true if the rule was updated, false otherwise.
+   * @since v3.0.0
+   */
+  updateRule(replaceWith: string, searchFor: SearchKeySingle): boolean
+  /**
+   * Updates an existing rule for character replacement with multiple subjects.
+   *
+   * @param {string} replaceWith - The string to replace the `searchFor` with.
+   * @param {string[]} searchFor - The array of strings to be replaced.
+   * @returns {boolean} - Returns true if the rule was updated, false otherwise.
+   * @since v3.0.0
+   */
+  updateRule(replaceWith: string, searchFor: SearchKeyMultiple): boolean
   updateRule(replaceWith: string, searchFor: SearchKey): boolean {
     return this.#insertRule(replaceWith, searchFor, true)
   }
