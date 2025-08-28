@@ -6,7 +6,7 @@
 
 ## v3.0.0 (*28-Aug-2025*)
 
-- **✨ feat**: add `longestMatchFirst` prop
+- **✨ feat**: add [`longestMatchFirst`](./README.md#ioptions) prop
 - **✨ feat**: respect all Unicode characters when replacing
 - **✨ feat**: add [`updateRule()`](./README.md#updaterule) method
 - **✅ fix**: fix how [`addRule()`](./README.md#addrule) handles rules overwriting
