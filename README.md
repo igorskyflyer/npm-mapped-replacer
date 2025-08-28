@@ -67,8 +67,8 @@ npm i @igorskyflyer/mapped-replacer
 
 > ❗ **IMPORTANT**
 >
-> Why use `replaceWith` → `searchFor` instead of the usual `searchFor` → `replaceWith`?
-> 
+> *Why use `replaceWith` → `searchFor` instead of the usual `searchFor` → `replaceWith`?*
+>
 > Instead of looping over each search term and rescanning the input `O(n × m)`, all rules are pre‑compiled into a single alternation regex once (`O(totalKeyLength × log n)` with sorting). At runtime, replacements happen in a single `O(m)` pass with constant‑time map lookups, reducing repeated scans and ensuring longest‑match‑first priority without extra cost. In practice, this can cut runtime by up to **~90%** when handling dozens or hundreds of patterns on large inputs, since the search cost collapses from `n` full scans to just `one`.
 >
 
