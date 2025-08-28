@@ -128,7 +128,7 @@ describe('🧪 Mapped Replacer tests 🧪', () => {
     suite('addRule(from, to) x 2', () => {
       test('#10 should use the latest rule', () => {
         mapper.addRule('&#0000;', '→')
-        mapper.addRule('&#8594;', '→')
+        mapper.updateRule('&#8594;', '→')
 
         const result: string = mapper.replace('a → b')
 
