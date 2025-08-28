@@ -8,8 +8,8 @@
 
 - **✨ feat**: add `longestMatchFirst` prop
 - **✨ feat**: respect all Unicode characters when replacing
-- **✨ feat**: add `updateRule` method
-- **✅ fix**: fix how `addRule` handles rules overwriting
+- **✨ feat**: add [`updateRule()`](./README.md#updaterule) method
+- **✅ fix**: fix how [`addRule()`](./README.md#addrule) handles rules overwriting
 - **💻 dev**: refactor RegExp used for escaping
 - **💻 dev**: simplify alternations generating
 - **💻 dev**: refactor branching in multiple places
