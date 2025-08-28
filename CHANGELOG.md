@@ -13,6 +13,8 @@
 - **💻 dev**: refactor RegExp used for escaping
 - **💻 dev**: simplify alternations generating
 - **💻 dev**: refactor branching in multiple places
+- **💻 dev**: upgrade Node to >= v22
+- **💻 dev**: upgrade dependencies
 
 <br>
 
