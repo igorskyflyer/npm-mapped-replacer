@@ -6,9 +6,9 @@
 
 ## v3.0.0 (*28-Aug-2025*)
 
-- **🪅 feat**: add `longestMatchFirst` prop
-- **🪅 feat**: respect all Unicode characters when replacing
-- **🪅 feat**: add `updateRule` method
+- **✨ feat**: add `longestMatchFirst` prop
+- **✨ feat**: respect all Unicode characters when replacing
+- **✨ feat**: add `updateRule` method
 
 <br>
 
@@ -24,7 +24,7 @@
 
 ## v2.2.0 (*28-Jul-2024*)
 
-- **🪅 feat**: add [`hasRule()`](./README.md#hasrule) method
+- **✨ feat**: add [`hasRule()`](./README.md#hasrule) method
 
 <br>
 
@@ -36,7 +36,7 @@
 
 ## v2.1.0 (*28-Jul-2024*)
 
-- **🪅 feat**: add strict mode, only replace whole matches
+- **✨ feat**: add strict mode, only replace whole matches
 
 <br>
 
@@ -53,10 +53,10 @@
 
 <br>
 
-- **🪅 feat**: add options to constructor
-- **🪅 feat**: add case-sensitivity option
-- **🪅 feat**: add `value -> string[]` mapping to [`addRule()`](./README.md#addrule) to allow mapping a single replacement value to multiple replace subjects
-- **🪅 feat**: add `value -> string[]` mapping to [`addRules()`](./README.md#addrules) to allow mapping a single replacement value to multiple replace subjects
+- **✨ feat**: add options to constructor
+- **✨ feat**: add case-sensitivity option
+- **✨ feat**: add `value -> string[]` mapping to [`addRule()`](./README.md#addrule) to allow mapping a single replacement value to multiple replace subjects
+- **✨ feat**: add `value -> string[]` mapping to [`addRules()`](./README.md#addrules) to allow mapping a single replacement value to multiple replace subjects
 
 <br>
 
